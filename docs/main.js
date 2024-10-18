@@ -395,8 +395,10 @@ function initCardImageGenerator() {
 
             // var yCenterAdjust = bigSymbols > 1 ? 20 : 0;
             // var maxHeightAdjust = bigSymbols > 1 ? 80 : 0;
-            var maxHeightAdjust =70;
+            var yCenterAdjust = 10;
+            var maxHeightAdjust =60;
 
+            yCenter += yCenterAdjust;
             maxHeight += maxHeightAdjust;
 
             do { //figure out the best font size, and also decide in advance how wide and tall each individual line is
