@@ -78,7 +78,16 @@ body {
 }
 
 .bold-text {
-    font-weight: 1700; /* Instead of 'bold', use explicit numeric weight */
+    font-weight: 900; /* Use a weight within browser limits */
+    -webkit-font-smoothing: antialiased; /* Chrome, Safari */
+    -moz-osx-font-smoothing: grayscale; /* Firefox */
+    text-rendering: optimizeLegibility; /* Enables better rendering */
+}
+
+* {
+    -webkit-font-smoothing: antialiased; /* Chrome, Safari */
+    -moz-osx-font-smoothing: grayscale; /* Firefox */
+    text-rendering: optimizeLegibility; /* Improves rendering */
 }
 
 
