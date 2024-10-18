@@ -227,10 +227,10 @@ function initCardImageGenerator() {
                         var localScale = scale;
                         if (words.length === 1 && !word.startsWith('+')) {
                             localY += 115 - scale * 48;
-                            context.font = "bold 1920pt " + family;
+                            context.font = "bold 192pt " + family;
                             localScale = 1.6;
                             if (templateSize === 3) {
-                                context.font = "bold 2220pt " + family;
+                                context.font = "bold 222pt " + family;
                                 if (word.includes('$')) { // Treasure Base cards
                                     localScale = localScale * 2;
                                 } else {
@@ -296,7 +296,7 @@ function initCardImageGenerator() {
                                     console.log(cost);
                                     // specialCost = '✱';
                                     specialCostSize = 65;
-                                    // syShift = 10;
+                                    syShift = 10;
                                     if (cost.length > 2) {
                                         bigNumberScale = 1.5 / (cost.length - 1);
                                     }
