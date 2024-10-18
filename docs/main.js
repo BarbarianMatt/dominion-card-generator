@@ -412,11 +412,11 @@ function initCardImageGenerator() {
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
                             console.log(line);
-                            var size= 192
-                            heightToAdd = Math.round(size*1.433); //192 * 1.433
+                            var custom_size= 192
+                            heightToAdd = Math.floor(custom_size*1.433); //192 * 1.433
+                            console.log(heightToAdd);
                             var properFont = context.font;
-                            context.font = "bold "+ size + "pt myText";
-                            console.log("bold "+ size + "pt myText");
+                            context.font = "bold "+ custom_size + "pt myText";
                             progressiveWidth = getWidthOfLineWithIconsReplacedWithSpaces(line); //=, not +=
                             context.font = properFont;
                         } else //regular word
