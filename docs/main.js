@@ -219,8 +219,8 @@ function initCardImageGenerator() {
                 console.log(word);
                 while (word) {
                     var match = word.match(iconWithNumbersPatternSingle);
-                    console.log(match);
                     if (match) {
+                        console.log(match);
                         var familyOriginal = family;
                         family = "mySpecials";
                         var localY = y;
@@ -234,10 +234,12 @@ function initCardImageGenerator() {
                                 if (word.includes('$')) { // Treasure Base cards
                                     localScale = localScale * 2;
                                 } else if (word.includes('%')) {
-                                    localY -= 20
+                                    console.log(localY,localScale);
+                                    localY -= 200
                                     localScale = localScale * 1;
                                 }
                                 else {
+                                    console.log(word);
                                     localScale = localScale * 1.5;
                                 }
                             } else {
