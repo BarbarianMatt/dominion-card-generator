@@ -226,7 +226,7 @@ function initCardImageGenerator() {
                         var localY = y;
                         var localScale = scale;
                         if (words.length === 1 && !word.startsWith('+')) {
-                            // localY += 115 - scale * 48;
+                            localY += 115*size - scale * 48;
                             // context.font = "bold 192pt " + family;
                             var ptSize = Math.floor(192 * size);
                             context.font = "bold "+ptSize+"pt " + family;
@@ -418,7 +418,7 @@ function initCardImageGenerator() {
                             progressiveWidth = context.measureText(line).width; //=, not +=
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
-                            customSize = 1;
+                            customSize = 0.5;
                             var ptSize = Math.floor(192 * customSize);
                             heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
