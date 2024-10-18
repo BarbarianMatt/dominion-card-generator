@@ -395,8 +395,8 @@ function initCardImageGenerator() {
 
             // var yCenterAdjust = bigSymbols > 1 ? 20 : 0;
             // var maxHeightAdjust = bigSymbols > 1 ? 80 : 0;
-            var yCenterAdjust = 10;
-            var maxHeightAdjust =40;
+            var yCenterAdjust = 5;
+            var maxHeightAdjust =30;
 
             yCenter += yCenterAdjust;
             maxHeight += maxHeightAdjust;
