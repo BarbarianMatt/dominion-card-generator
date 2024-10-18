@@ -412,9 +412,10 @@ function initCardImageGenerator() {
                             progressiveWidth = context.measureText(line).width; //=, not +=
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
-                            console.log(line);
+                            console.log(word);
                             var custom_size= 92
                             heightToAdd = Math.floor(custom_size*1.433);
+                            heightToAdd+=5;
                             var properFont = context.font;
                             context.font = "bold "+ custom_size + "pt myText";
                             progressiveWidth = getWidthOfLineWithIconsReplacedWithSpaces(line); //=, not +=
@@ -458,6 +459,9 @@ function initCardImageGenerator() {
             } while (overallHeight > maxHeight && size > 16); //can only shrink so far before giving up
             var y = yCenter - (overallHeight - size * 1.433) / 2;
             //var barHeight = size / 80 * 10;
+            console.log(overallHeight)
+            console.log(heightsPerLine);
+            console.log(lines);
             for (var i = 0; i < lines.length; ++i) {
                 var line = lines[i];
                 if (line === "-") //horizontal bar
