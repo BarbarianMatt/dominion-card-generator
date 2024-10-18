@@ -226,8 +226,8 @@ function initCardImageGenerator() {
                         if (words.length === 1 && !word.startsWith('+')) {
                             localY += 115 - scale * 48;
                             // context.font = "bold 192pt " + family;
-                            context.font = "bold 92pt " + family;
-                            localScale = 1.6*(92/192);
+                            context.font = "bold 192pt " + family;
+                            localScale = 1.6;
 
                             if (templateSize === 3) {
                                 context.font = "bold 222pt " + family;
@@ -382,11 +382,13 @@ function initCardImageGenerator() {
             var lines;
             var widthsPerLine;
             var heightsPerLine;
+            var sizesPerLine;
             var overallHeight;
             var size = 64 + 2;
             do { //figure out the best font size, and also decide in advance how wide and tall each individual line is
                 widthsPerLine = [];
                 heightsPerLine = [];
+                sizesPerLine = [];
                 overallHeight = 0;
 
                 size -= 2;
@@ -399,6 +401,7 @@ function initCardImageGenerator() {
                 for (var i = 0; i < words.length; ++i) {
                     var word = words[i];
                     var heightToAdd = 0;
+                    var customSize = size;
                     if (word === "\n") {
                         lines.push(line);
                         if (line === "") //multiple newlines in a row
@@ -412,12 +415,11 @@ function initCardImageGenerator() {
                             progressiveWidth = context.measureText(line).width; //=, not +=
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
-                            console.log(word);
-                            var custom_size= 92
-                            heightToAdd = Math.floor(custom_size*1.433);
-                            heightToAdd+=5;
+                            customSize *= 0.5
+                            var ptSize = Math.floor(192 * 0.5);
+                            heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
-                            context.font = "bold "+ custom_size + "pt myText";
+                            context.font = "bold "+ ptSize + "pt myText";
                             progressiveWidth = getWidthOfLineWithIconsReplacedWithSpaces(line); //=, not +=
                             context.font = properFont;
                         } else //regular word
@@ -454,20 +456,25 @@ function initCardImageGenerator() {
                     }
                     overallHeight += heightToAdd;
                     heightsPerLine.push(heightToAdd);
+                    sizesPerLine.push(customSize);
                 }
                 //overallHeight -= size*1.433;
             } while (overallHeight > maxHeight && size > 16); //can only shrink so far before giving up
             var y = yCenter - (overallHeight - size * 1.433) / 2;
             //var barHeight = size / 80 * 10;
-            console.log(overallHeight)
+            console.log(overallHeight);
+            console.log(widthsPerLine);
             console.log(heightsPerLine);
+            console.log(size);
+            console.log(sizesPerLine);
             console.log(lines);
             for (var i = 0; i < lines.length; ++i) {
+                console.log(y);
                 var line = lines[i];
                 if (line === "-") //horizontal bar
                     context.fillRect(xCenter / 2, y - size * 0.375 - 5, xCenter, 10);
                 else if (line.length)
-                    writeLineWithIconsReplacedWithSpaces(line, xCenter - widthsPerLine[i] / 2, y, size / 96, "myText", boldSize);
+                    writeLineWithIconsReplacedWithSpaces(line, xCenter - widthsPerLine[i] / 2, y, sizesPerLine[i] / 96, "myText", boldSize);
                 //else empty line with nothing to draw
                 y += heightsPerLine[i];
             }
