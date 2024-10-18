@@ -536,7 +536,8 @@ function initCardImageGenerator() {
         var heirloomLine = document.getElementById("type2").value;
         var previewLine = document.getElementById("preview").value;
         var priceLine = document.getElementById("price").value;
-        var numberPriceIcons = (priceLine.match(new RegExp("[" + Object.keys(icons).join("") + "]", "g")) || []).length
+        var priceIconKeys = Object.keys(icons).filter(key => key !== "\\*").join("");
+        var numberPriceIcons = (priceLine.match(new RegExp("[" + Object.keys(priceIconKeys).join("") + "]", "g")) || []).length
         console.log(numberPriceIcons);
 
         var isEachColorDark = [false, false];
