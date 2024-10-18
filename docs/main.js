@@ -418,7 +418,7 @@ function initCardImageGenerator() {
                             progressiveWidth = context.measureText(line).width; //=, not +=
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
-                            customSize = 0.5;
+                            customSize = 1;
                             var ptSize = Math.floor(192 * customSize);
                             heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
