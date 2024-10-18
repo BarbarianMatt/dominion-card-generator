@@ -2,6 +2,4 @@
     font-family: 'myText';
     font-display: auto;
     src: local("Times New Roman"), serif;
-    font-weight: 400; /* Regular */
-    font-weight: 700; /* Bold weight */
 }
