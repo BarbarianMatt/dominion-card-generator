@@ -537,6 +537,7 @@ function initCardImageGenerator() {
         var previewLine = document.getElementById("preview").value;
         var priceLine = document.getElementById("price").value;
         var numberPriceIcons = (priceLine.match(new RegExp("[" + Object.keys(icons).join("") + "]", "g")) || []).length
+        console.log(numberPriceIcons);
 
         var isEachColorDark = [false, false];
         for (var i = 0; i < 2; ++i)
