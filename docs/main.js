@@ -287,6 +287,8 @@ function initCardImageGenerator() {
                                 let specialCostSize = 45;
                                 let syShift = 0;
                                 if (specialCost === '*') {
+                                    console.log('cool');
+                                    console.log(specialCost);
                                     specialCost = '✱';
                                     specialCostSize = 65;
                                     // syShift = 10;
