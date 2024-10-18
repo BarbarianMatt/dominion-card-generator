@@ -393,8 +393,10 @@ function initCardImageGenerator() {
                 return acc;
             }, 0);
 
-            var yCenterAdjust = bigSymbols > 1 ? 20 : 0;
-            var maxHeightAdjust = bigSymbols > 1 ? 80 : 0;
+            // var yCenterAdjust = bigSymbols > 1 ? 20 : 0;
+            // var maxHeightAdjust = bigSymbols > 1 ? 80 : 0;
+            var yCenterAdjust = 20;
+            var maxHeightAdjust =80;
 
             yCenter += yCenterAdjust;
             maxHeight += maxHeightAdjust;
@@ -428,8 +430,8 @@ function initCardImageGenerator() {
                             progressiveWidth = context.measureText(line).width; //=, not +=
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
-                            // customSize = bigSymbolSize;
-                            customSize = bigSymbols > 1 ? Math.max(size/64,0.8) : 1;
+                            // customSize = bigSymbols > 1 ? Math.max(size/64,0.8) : 1;
+                            customSize = Math.max(size/64,0.8);
                             var ptSize = Math.floor(192 * customSize);
                             heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
