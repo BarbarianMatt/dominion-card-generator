@@ -77,12 +77,12 @@ body {
     -moz-osx-font-smoothing: grayscale; /* Firefox */
 }
 
-.bold-text {
-    font-weight: 900; /* Use a weight within browser limits */
-    -webkit-font-smoothing: antialiased; /* Chrome, Safari */
-    -moz-osx-font-smoothing: grayscale; /* Firefox */
-    text-rendering: optimizeLegibility; /* Enables better rendering */
-}
+/* .bold-text {
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+    text-rendering: optimizeLegibility; 
+} */
 
 /* * {
     -webkit-font-smoothing: antialiased;
