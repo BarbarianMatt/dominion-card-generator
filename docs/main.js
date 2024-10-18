@@ -213,6 +213,7 @@ function initCardImageGenerator() {
             }
 
             var words = line.split(" ");
+            console.log(line);
             for (var i = 0; i < words.length; ++i) {
                 var word = words[i];
                 context.save();
@@ -230,15 +231,16 @@ function initCardImageGenerator() {
                             console.log(word);
                             localY += 115 - scale * 48;
                             context.font = "bold 192pt " + family;
-                            localScale = 1.6;
+                            // localScale = 1.6;
+                            localScale = 1;
                             if (templateSize === 3) {
                                 context.font = "bold 222pt " + family;
                                 if (word.includes('$')) { // Treasure Base cards
                                     localScale = localScale * 2;
-                                } else if (word.includes('%')) {
-                                    console.log(localY,localScale);
-                                    localY -= 200
-                                    localScale = localScale * 1;
+                                // } else if (word.includes('%')) {
+                                //     console.log(localY,localScale);
+                                //     localY -= 200
+                                //     localScale = localScale * 1;
                                 }
                                 else {
                                     console.log(word);
