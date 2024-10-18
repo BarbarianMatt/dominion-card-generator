@@ -72,9 +72,9 @@ body {
     font-family: myText;
     color: var(--color-text);
     background: var(--color-background1);
-    font-weight: 400; /* Normal text weight */
-    -webkit-font-smoothing: antialiased; /* Chrome, Safari */
-    -moz-osx-font-smoothing: grayscale; /* Firefox */
+    /* font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;  */
 }
 
 /* .bold-text {

@@ -1,5 +1,7 @@
 @font-face {
     font-family: 'myText';
-    font-display: auto;
-    src: local("Times New Roman"), serif;
+    /* font-display: auto;
+    src: local("Times New Roman"), serif; */
+    font-display: swap;
+    src: url('https://fonts.gstatic.com/s/timesnewroman') format('woff2'), serif;
 }
