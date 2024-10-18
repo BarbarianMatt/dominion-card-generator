@@ -34,7 +34,7 @@ function initCardImageGenerator() {
         "%": ["VP", "white", "Victory"],
         "#": ["VP-Token", "white", "Victory"], //German VP Token (not a nice decision of ASS Altenburger, but maybe nice to have to keep the cards consistent)
         "\\$": ["Coin", "black", "Treasure"],
-        // "\\*": ["Sun", "black", "Treasure"],
+        "\\*": ["Sun", "black", "Treasure"],
         "§": ["Custom Icon", "white", "Treasure"]
     };
     var normalColorFactorLists = [
@@ -288,7 +288,7 @@ function initCardImageGenerator() {
                                 let syShift = 0;
                                 if (specialCost === '*') {
                                     console.log('cool');
-                                    console.log(specialCost);
+                                    console.log(cost);
                                     // specialCost = '✱';
                                     specialCostSize = 65;
                                     // syShift = 10;
