@@ -389,7 +389,8 @@ function initCardImageGenerator() {
             var sizesPerLine;
             var overallHeight;
             var size = 64 + 2;
-            maxHeight += 100;
+            yCenter += 20;
+            maxHeight += 80;
             do { //figure out the best font size, and also decide in advance how wide and tall each individual line is
                 widthsPerLine = [];
                 heightsPerLine = [];
@@ -428,7 +429,7 @@ function initCardImageGenerator() {
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
                             // customSize = bigSymbolSize;
-                            customSize = bigSymbols > 1 ? size/64 : 1;
+                            customSize = bigSymbols > 1 ? Math.max(size/64,0.8) : 1;
                             var ptSize = Math.floor(192 * customSize);
                             heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
