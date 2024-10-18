@@ -429,7 +429,7 @@ function initCardImageGenerator() {
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
                             // customSize = bigSymbolSize;
-                            customSize = bigSymbols > 1 ? Math.max(size/64,0.9) : 1;
+                            customSize = bigSymbols > 1 ? Math.max(size/64,0.8) : 1;
                             var ptSize = Math.floor(192 * customSize);
                             heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
