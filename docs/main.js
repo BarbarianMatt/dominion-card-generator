@@ -184,7 +184,8 @@ function initCardImageGenerator() {
             return recoloredImages[imageID];
         }
 
-        var iconReplacedWithSpaces = "     ";
+        // var iconReplacedWithSpaces = "     ";
+        var iconReplacedWithSpaces = "";
 
         function getWidthOfLineWithIconsReplacedWithSpaces(line) {
             return context.measureText(line.replace(iconWithNumbersPattern, iconReplacedWithSpaces)).width;
