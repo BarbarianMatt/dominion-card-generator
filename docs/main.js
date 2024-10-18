@@ -332,6 +332,7 @@ function initCardImageGenerator() {
                         word = match[4];
                     } else {
                         if (word.match(boldLinePatternWords) || word.match(boldLinePatternWordsSpecial)) {
+                            console.log(word);
                             if (words.length === 1)
                                 context.font = "bold " + boldSize + "pt " + family;
                             else
@@ -339,6 +340,7 @@ function initCardImageGenerator() {
                         }
                         if (context.font.includes('bold')) {
                             let lastChar = word.substr(word.length - 1);
+                            console.log(lastChar);
                             if ([",", ";", ".", "?", "!", ":"].includes(lastChar)) {
                                 word = word.slice(0, -1);
                             } else {
@@ -355,6 +357,7 @@ function initCardImageGenerator() {
 
                             word = word + lastChar;
                         } else {
+                            console.log(word);
                             context.fillText(word, x, y);
                         }
 
