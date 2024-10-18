@@ -412,9 +412,8 @@ function initCardImageGenerator() {
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
                             console.log(line);
-                            var custom_size= 192
-                            heightToAdd = Math.floor(custom_size*1.433); //192 * 1.433
-                            console.log(heightToAdd);
+                            var custom_size= 92
+                            heightToAdd = Math.floor(custom_size*1.433);
                             var properFont = context.font;
                             context.font = "bold "+ custom_size + "pt myText";
                             progressiveWidth = getWidthOfLineWithIconsReplacedWithSpaces(line); //=, not +=
