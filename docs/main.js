@@ -358,6 +358,8 @@ function initCardImageGenerator() {
                             word = word + lastChar;
                         } else {
                             console.log(word);
+                            console.log(x,y);
+                            console.log(context);
                             context.fillText(word, x, y);
                         }
 
