@@ -202,6 +202,8 @@ function initCardImageGenerator() {
             console.log(x,y,line);
             console.trace();
 
+            scale *= size;
+
             if (italicSubstrings.some(substring => line.includes(substring))) {
                 context.font = "italic " + context.font;
                 if (line.includes("[i]")) {
@@ -224,7 +226,7 @@ function initCardImageGenerator() {
                         var localY = y;
                         var localScale = scale;
                         if (words.length === 1 && !word.startsWith('+')) {
-                            localY += 115 - scale * 48 * size;
+                            localY += 115 - scale * 48;
                             // context.font = "bold 192pt " + family;
                             var ptSize = Math.floor(192 * size);
                             context.font = "bold "+ptSize+"pt " + family;
