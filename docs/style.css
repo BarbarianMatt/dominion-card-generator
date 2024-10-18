@@ -84,11 +84,11 @@ body {
     text-rendering: optimizeLegibility; /* Enables better rendering */
 }
 
-* {
-    -webkit-font-smoothing: antialiased; /* Chrome, Safari */
-    -moz-osx-font-smoothing: grayscale; /* Firefox */
-    text-rendering: optimizeLegibility; /* Improves rendering */
-}
+/* * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+    text-rendering: optimizeLegibility;
+} */
 
 
 body:before,
