@@ -396,7 +396,7 @@ function initCardImageGenerator() {
             // var yCenterAdjust = bigSymbols > 1 ? 20 : 0;
             // var maxHeightAdjust = bigSymbols > 1 ? 80 : 0;
             var yCenterAdjust = 20;
-            var maxHeightAdjust =80;
+            var maxHeightAdjust =75;
 
             yCenter += yCenterAdjust;
             maxHeight += maxHeightAdjust;
@@ -431,7 +431,8 @@ function initCardImageGenerator() {
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
                             // customSize = bigSymbols > 1 ? Math.max(size/64,0.8) : 1;
-                            customSize = Math.max(size/64,0.8);
+                            var minSize = bigSymbols > 1 ? 0.8 : 0.95;
+                            customSize = Math.max(size/64,minSize);
                             var ptSize = Math.floor(192 * customSize);
                             heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
