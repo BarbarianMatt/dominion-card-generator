@@ -72,6 +72,11 @@ body {
     font-family: myText;
     color: var(--color-text);
     background: var(--color-background1);
+    font-weight: 400; /* Normal text weight */
+}
+strong, b {
+    font-family: myText;
+    font-weight: 700; /* Stronger bold */
 }
 
 body:before,
