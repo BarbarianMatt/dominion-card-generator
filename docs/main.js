@@ -389,8 +389,8 @@ function initCardImageGenerator() {
             var sizesPerLine;
             var overallHeight;
             var size = 64 + 2;
-            yCenter += 20;
-            maxHeight += 80;
+            var yCenterAdjust;
+            var maxHeightAdjust;
             do { //figure out the best font size, and also decide in advance how wide and tall each individual line is
                 widthsPerLine = [];
                 heightsPerLine = [];
@@ -409,8 +409,8 @@ function initCardImageGenerator() {
                     }
                     return acc;
                   }, 0);
-                console.log(bigSymbols);
-                console.log(words);
+                yCenterAdjust = bigSymbols > 1 ? 20 : 0;
+                maxHeightAdjust = bigSymbols > 1 ? 80 : 0;
                 for (var i = 0; i < words.length; ++i) {
                     var word = words[i];
                     var heightToAdd = 0;
@@ -442,19 +442,16 @@ function initCardImageGenerator() {
                         widthsPerLine.push(progressiveWidth);
                         progressiveWidth = 0;
                     } else {
-                        console.log(word);
                         if (word.charAt(0) === "\xa0") {
                             word = word.substring(1);
                         }
                         if (progressiveWidth + getWidthOfLineWithIconsReplacedWithSpaces(" " + word) > maxWidth) {
-                            console.log(word);
                             lines.push(line + " ");
                             line = word;
                             heightToAdd = size * 1.433;
                             widthsPerLine.push(progressiveWidth);
                             progressiveWidth = getWidthOfLineWithIconsReplacedWithSpaces(word);
                         } else {
-                            console.log(word);
                             if (line.length) {
                                 line += " ";
                                 progressiveWidth += widthOfSpace;
@@ -475,15 +472,11 @@ function initCardImageGenerator() {
                 //overallHeight -= size*1.433;
             } while (overallHeight > maxHeight && size > 16); //can only shrink so far before giving up
             var y = yCenter - (overallHeight - size * 1.433) / 2;
-            //var barHeight = size / 80 * 10;
-            console.log(overallHeight);
-            console.log(widthsPerLine);
-            console.log(heightsPerLine);
-            console.log(size);
-            console.log(sizesPerLine);
-            console.log(lines);
+            
+            yCenter += yCenterAdjust;
+            maxHeight += maxHeightAdjust;
+
             for (var i = 0; i < lines.length; ++i) {
-                console.log(y);
                 var line = lines[i];
                 if (line === "-") //horizontal bar
                     context.fillRect(xCenter / 2, y - size * 0.375 - 5, xCenter, 10);
