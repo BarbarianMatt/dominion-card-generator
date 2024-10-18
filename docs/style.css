@@ -78,7 +78,7 @@ body {
 }
 strong, b {
     font-family: myText;
-    font-weight: 700; /* Stronger bold */
+    font-weight: 1700; /* Stronger bold */
 }
 
 body:before,
