@@ -274,59 +274,59 @@ function initCardImageGenerator() {
                             context.drawImage(image, image.width / -2, image.height / -2);
                             context.shadowColor = "transparent";
                         } //else... well, that's pretty weird, but so it goes.
-                        // if (match[3]) { //text in front of image
-                        //     context.textAlign = "center";
-                        //     console.log(getIconListing(match[2])[1]);
-                        //     context.fillStyle = getIconListing(match[2])[1];
-                        //     let cost = match[3];
-                        //     let bigNumberScale = 1;
-                        //     let nx = localScale > 1.4 ? 0 : -5 * localScale ^ 2;
-                        //     let ny = localScale > 1 ? 6 * localScale : localScale > 0.7 ? 12 * localScale : localScale > 0.5 ? 24 * localScale : 48 * localScale;
-                        //     if (localScale > 3) {
-                        //         bigNumberScale = 0.8;
-                        //         ny -= (115 * 0.2) / 2;
-                        //     }
-                        //     if (cost.length >= 2) {
-                        //         // special handling for overpay and variable costs
-                        //         let specialCost = cost.slice(-1);
-                        //         let specialCostSize = 45;
-                        //         let syShift = 0;
-                        //         if (specialCost === '*') {
-                        //             console.log('cool');
-                        //             console.log(cost);
-                        //             // specialCost = '✱';
-                        //             specialCostSize = 65;
-                        //             // syShift = 10;
-                        //             if (cost.length > 2) {
-                        //                 bigNumberScale = 1.5 / (cost.length - 1);
-                        //             }
-                        //         } else if (specialCost === '+') {
-                        //             specialCost = '✚';
-                        //             specialCostSize = 40;
-                        //             if (cost.length > 2) {
-                        //                 bigNumberScale = 1.5 / (cost.length - 1);
-                        //             }
-                        //         } else {
-                        //             specialCost = null;
-                        //             bigNumberScale = 1.5 / cost.length;
-                        //         }
-                        //         if (specialCost != null) {
-                        //             cost = cost.slice(0, -1) + " ";
-                        //             context.font = "bold " + specialCostSize + "pt " + family;
-                        //             let sx = localScale > 1 ? 45 / 2 * localScale : 45 * localScale;
-                        //             let sy = localScale > 1 ? -20 * localScale : 12 * localScale - 35 * localScale;
-                        //             if (cost.length >= 3) {
-                        //                 nx -= specialCostSize * 1 / 3;
-                        //                 sx += specialCostSize * 1 / 3;
-                        //             }
-                        //             sy += syShift * localScale;
-                        //             context.fillText(specialCost, sx, sy);
-                        //         }
-                        //     }
-                        //     context.font = "bold " + 115 * bigNumberScale + "pt " + family;
-                        //     context.fillText(cost, nx, ny);
-                        //     //context.strokeText(match[3], 0, 0);
-                        // }
+                        if (match[3]) { //text in front of image
+                            context.textAlign = "center";
+                            console.log(getIconListing(match[2])[1]);
+                            context.fillStyle = getIconListing(match[2])[1];
+                            let cost = match[3];
+                            let bigNumberScale = 1;
+                            let nx = localScale > 1.4 ? 0 : -5 * localScale ^ 2;
+                            let ny = localScale > 1 ? 6 * localScale : localScale > 0.7 ? 12 * localScale : localScale > 0.5 ? 24 * localScale : 48 * localScale;
+                            if (localScale > 3) {
+                                bigNumberScale = 0.8;
+                                ny -= (115 * 0.2) / 2;
+                            }
+                            if (cost.length >= 2) {
+                                // special handling for overpay and variable costs
+                                let specialCost = cost.slice(-1);
+                                let specialCostSize = 45;
+                                let syShift = 0;
+                                if (specialCost === '*') {
+                                    console.log('cool');
+                                    console.log(cost);
+                                    // specialCost = '✱';
+                                    specialCostSize = 65;
+                                    // syShift = 10;
+                                    if (cost.length > 2) {
+                                        bigNumberScale = 1.5 / (cost.length - 1);
+                                    }
+                                } else if (specialCost === '+') {
+                                    specialCost = '✚';
+                                    specialCostSize = 40;
+                                    if (cost.length > 2) {
+                                        bigNumberScale = 1.5 / (cost.length - 1);
+                                    }
+                                } else {
+                                    specialCost = null;
+                                    bigNumberScale = 1.5 / cost.length;
+                                }
+                                if (specialCost != null) {
+                                    cost = cost.slice(0, -1) + " ";
+                                    context.font = "bold " + specialCostSize + "pt " + family;
+                                    let sx = localScale > 1 ? 45 / 2 * localScale : 45 * localScale;
+                                    let sy = localScale > 1 ? -20 * localScale : 12 * localScale - 35 * localScale;
+                                    if (cost.length >= 3) {
+                                        nx -= specialCostSize * 1 / 3;
+                                        sx += specialCostSize * 1 / 3;
+                                    }
+                                    sy += syShift * localScale;
+                                    context.fillText(specialCost, sx, sy);
+                                }
+                            }
+                            context.font = "bold " + 115 * bigNumberScale + "pt " + family;
+                            context.fillText(cost, nx, ny);
+                            //context.strokeText(match[3], 0, 0);
+                        }
                         context.restore();
                         family = familyOriginal;
 
