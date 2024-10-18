@@ -184,8 +184,7 @@ function initCardImageGenerator() {
             return recoloredImages[imageID];
         }
 
-        // var iconReplacedWithSpaces = "     ";
-        var iconReplacedWithSpaces = "";
+        var iconReplacedWithSpaces = "     ";
 
         function getWidthOfLineWithIconsReplacedWithSpaces(line) {
             return context.measureText(line.replace(iconWithNumbersPattern, iconReplacedWithSpaces)).width;
@@ -380,6 +379,8 @@ function initCardImageGenerator() {
             do {
                 context.font = (size -= 2) + "pt " + family;
             } while (maxWidth && getWidthOfLineWithIconsReplacedWithSpaces(line) > maxWidth);
+            console.log(x,y);
+            console.log(x - getWidthOfLineWithIconsReplacedWithSpaces(line) / 2, y);
             writeLineWithIconsReplacedWithSpaces(line, x - getWidthOfLineWithIconsReplacedWithSpaces(line) / 2, y, size / 90, family);
         }
 
