@@ -217,6 +217,7 @@ function initCardImageGenerator() {
                 var word = words[i];
                 context.save();
                 console.log(word);
+                console.log(words);
                 while (word) {
                     var match = word.match(iconWithNumbersPatternSingle);
                     if (match) {
@@ -226,6 +227,7 @@ function initCardImageGenerator() {
                         var localY = y;
                         var localScale = scale;
                         if (words.length === 1 && !word.startsWith('+')) {
+                            console.log(word);
                             localY += 115 - scale * 48;
                             context.font = "bold 192pt " + family;
                             localScale = 1.6;
@@ -243,6 +245,7 @@ function initCardImageGenerator() {
                                     localScale = localScale * 1.5;
                                 }
                             } else {
+                                console.log(word);
                                 x = x + 48 * scale;
                             }
                         }
