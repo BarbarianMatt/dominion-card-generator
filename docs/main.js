@@ -214,8 +214,10 @@ function initCardImageGenerator() {
             for (var i = 0; i < words.length; ++i) {
                 var word = words[i];
                 context.save();
+                console.log(word);
                 while (word) {
                     var match = word.match(iconWithNumbersPatternSingle);
+                    console.log(match);
                     if (match) {
                         var familyOriginal = family;
                         family = "mySpecials";
@@ -273,7 +275,7 @@ function initCardImageGenerator() {
                         if (match[3]) { //text in front of image
                             context.textAlign = "center";
                             console.log(getIconListing(match[2])[1]);
-                            // context.fillStyle = getIconListing(match[2])[1];
+                            context.fillStyle = getIconListing(match[2])[1];
                             let cost = match[3];
                             let bigNumberScale = 1;
                             let nx = localScale > 1.4 ? 0 : -5 * localScale ^ 2;
