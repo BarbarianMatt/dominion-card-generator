@@ -199,6 +199,8 @@ function initCardImageGenerator() {
         function writeLineWithIconsReplacedWithSpaces(line, x, y, scale, family, boldSize) {
             boldSize = boldSize || 64;
             context.textAlign = "left";
+            console.log(x,y);
+            console.trace();
 
             if (italicSubstrings.some(substring => line.includes(substring))) {
                 context.font = "italic " + context.font;
