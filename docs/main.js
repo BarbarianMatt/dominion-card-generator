@@ -199,7 +199,7 @@ function initCardImageGenerator() {
         function writeLineWithIconsReplacedWithSpaces(line, x, y, scale, family, boldSize) {
             boldSize = boldSize || 64;
             context.textAlign = "left";
-            console.log(x,y);
+            console.log(x,y,line);
             console.trace();
 
             if (italicSubstrings.some(substring => line.includes(substring))) {
@@ -213,43 +213,30 @@ function initCardImageGenerator() {
             }
 
             var words = line.split(" ");
-            console.log(line);
             for (var i = 0; i < words.length; ++i) {
                 var word = words[i];
                 context.save();
-                console.log(word);
-                console.log(words);
                 while (word) {
                     var match = word.match(iconWithNumbersPatternSingle);
                     if (match) {
-                        console.log(match);
                         var familyOriginal = family;
                         family = "mySpecials";
                         var localY = y;
                         var localScale = scale;
                         if (words.length === 1 && !word.startsWith('+')) {
-                            console.log(word);
                             localY += 115 - scale * 48;
-                            context.font = "bold 92pt " + family;
-                            // localScale = 1.6;
-                            console.log(localScale,localY);
-                            localScale = 1;
-                            // localY -= 20
+                            context.font = "bold 192pt " + family;
+                            localScale = 1.6;
+
                             if (templateSize === 3) {
                                 context.font = "bold 222pt " + family;
                                 if (word.includes('$')) { // Treasure Base cards
                                     localScale = localScale * 2;
-                                // } else if (word.includes('%')) {
-                                //     console.log(localY,localScale);
-                                //     localY -= 200
-                                //     localScale = localScale * 1;
                                 }
                                 else {
-                                    console.log(word);
                                     localScale = localScale * 1.5;
                                 }
                             } else {
-                                console.log(word);
                                 x = x + 48 * scale;
                             }
                         }
@@ -289,7 +276,6 @@ function initCardImageGenerator() {
                         } //else... well, that's pretty weird, but so it goes.
                         if (match[3]) { //text in front of image
                             context.textAlign = "center";
-                            console.log(getIconListing(match[2])[1]);
                             context.fillStyle = getIconListing(match[2])[1];
                             let cost = match[3];
                             let bigNumberScale = 1;
@@ -305,8 +291,6 @@ function initCardImageGenerator() {
                                 let specialCostSize = 45;
                                 let syShift = 0;
                                 if (specialCost === '*') {
-                                    console.log('cool');
-                                    console.log(cost);
                                     // specialCost = '✱';
                                     specialCostSize = 65;
                                     syShift = 10;
@@ -347,7 +331,6 @@ function initCardImageGenerator() {
                         word = match[4];
                     } else {
                         if (word.match(boldLinePatternWords) || word.match(boldLinePatternWordsSpecial)) {
-                            console.log(word);
                             if (words.length === 1)
                                 context.font = "bold " + boldSize + "pt " + family;
                             else
@@ -355,7 +338,6 @@ function initCardImageGenerator() {
                         }
                         if (context.font.includes('bold')) {
                             let lastChar = word.substr(word.length - 1);
-                            console.log(lastChar);
                             if ([",", ";", ".", "?", "!", ":"].includes(lastChar)) {
                                 word = word.slice(0, -1);
                             } else {
@@ -372,9 +354,6 @@ function initCardImageGenerator() {
 
                             word = word + lastChar;
                         } else {
-                            console.log(word);
-                            console.log(x,y);
-                            console.log(context);
                             context.fillText(word, x, y);
                         }
 
@@ -392,8 +371,6 @@ function initCardImageGenerator() {
             do {
                 context.font = (size -= 2) + "pt " + family;
             } while (maxWidth && getWidthOfLineWithIconsReplacedWithSpaces(line) > maxWidth);
-            console.log(x,y);
-            console.log(x - getWidthOfLineWithIconsReplacedWithSpaces(line) / 2, y);
             writeLineWithIconsReplacedWithSpaces(line, x - getWidthOfLineWithIconsReplacedWithSpaces(line) / 2, y, size / 90, family);
         }
 
@@ -417,6 +394,7 @@ function initCardImageGenerator() {
                 lines = [];
                 var line = "";
                 var progressiveWidth = 0;
+                console.log(words);
                 for (var i = 0; i < words.length; ++i) {
                     var word = words[i];
                     var heightToAdd = 0;
@@ -433,9 +411,11 @@ function initCardImageGenerator() {
                             progressiveWidth = context.measureText(line).width; //=, not +=
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
-                            heightToAdd = 275; //192 * 1.433
+                            console.log(line);
+                            var size= 192
+                            heightToAdd = size*1.433; //192 * 1.433
                             var properFont = context.font;
-                            context.font = "bold 192pt myText";
+                            context.font = "bold "+ size + "pt myText"; 
                             progressiveWidth = getWidthOfLineWithIconsReplacedWithSpaces(line); //=, not +=
                             context.font = properFont;
                         } else //regular word
@@ -551,7 +531,6 @@ function initCardImageGenerator() {
         var priceLine = document.getElementById("price").value;
         var priceIconKeys = Object.keys(icons).filter(key => key !== "\\*").join("");
         var numberPriceIcons = (priceLine.match(new RegExp("[" + priceIconKeys + "]", "g")) || []).length
-        console.log(numberPriceIcons);
 
         var isEachColorDark = [false, false];
         for (var i = 0; i < 2; ++i)
