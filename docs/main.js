@@ -283,7 +283,8 @@ function initCardImageGenerator() {
                             context.fillStyle = getIconListing(match[2])[1];
                             let cost = match[3];
                             let bigNumberScale = 1;
-                            let nx = localScale > 1.4 ? 0 : -5 * localScale ^ 2;
+                            let nx = 0;
+                            // let nx = localScale > 1.4 ? 0 : -5 * localScale ^ 2;
                             let ny = localScale > 1 ? 6 * localScale : localScale > 0.7 ? 12 * localScale : localScale > 0.5 ? 24 * localScale : 48 * localScale;
                             if (localScale > 3) {
                                 bigNumberScale = 0.8;
@@ -388,6 +389,7 @@ function initCardImageGenerator() {
             var sizesPerLine;
             var overallHeight;
             var size = 64 + 2;
+            maxHeight += 100;
             do { //figure out the best font size, and also decide in advance how wide and tall each individual line is
                 widthsPerLine = [];
                 heightsPerLine = [];
