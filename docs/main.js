@@ -196,7 +196,7 @@ function initCardImageGenerator() {
         var shadowDistance = 10;
         var italicSubstrings = ["[i]", "Heirloom: ", "Erbstück: ", "(This is not in the Supply.)", "Keep this until Clean-up."];
 
-        function writeLineWithIconsReplacedWithSpaces(line, x, y, scale, family, boldSize) {
+        function writeLineWithIconsReplacedWithSpaces(line, x, y, scale, family, boldSize, size=1) {
             boldSize = boldSize || 64;
             context.textAlign = "left";
             console.log(x,y,line);
@@ -226,8 +226,9 @@ function initCardImageGenerator() {
                         if (words.length === 1 && !word.startsWith('+')) {
                             localY += 115 - scale * 48;
                             // context.font = "bold 192pt " + family;
-                            context.font = "bold 192pt " + family;
-                            localScale = 1.6;
+                            var ptSize = Math.floor(192 * size);
+                            context.font = "bold "+ptSize+"pt " + family;
+                            localScale = 1.6 * size;
 
                             if (templateSize === 3) {
                                 context.font = "bold 222pt " + family;
@@ -401,7 +402,7 @@ function initCardImageGenerator() {
                 for (var i = 0; i < words.length; ++i) {
                     var word = words[i];
                     var heightToAdd = 0;
-                    var customSize = size;
+                    var customSize = 1;
                     if (word === "\n") {
                         lines.push(line);
                         if (line === "") //multiple newlines in a row
@@ -415,8 +416,8 @@ function initCardImageGenerator() {
                             progressiveWidth = context.measureText(line).width; //=, not +=
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
-                            customSize *= 0.5
-                            var ptSize = Math.floor(192 * 0.5);
+                            customSize = 1;
+                            var ptSize = Math.floor(192 * customSize);
                             heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
                             context.font = "bold "+ ptSize + "pt myText";
@@ -474,7 +475,7 @@ function initCardImageGenerator() {
                 if (line === "-") //horizontal bar
                     context.fillRect(xCenter / 2, y - size * 0.375 - 5, xCenter, 10);
                 else if (line.length)
-                    writeLineWithIconsReplacedWithSpaces(line, xCenter - widthsPerLine[i] / 2, y, sizesPerLine[i] / 96, "myText", boldSize);
+                    writeLineWithIconsReplacedWithSpaces(line, xCenter - widthsPerLine[i] / 2, y, size / 96, "myText", boldSize, sizesPerLine[i]);
                 //else empty line with nothing to draw
                 y += heightsPerLine[i];
             }
