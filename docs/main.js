@@ -415,7 +415,8 @@ function initCardImageGenerator() {
                             var size= 192
                             heightToAdd = Math.round(size*1.433); //192 * 1.433
                             var properFont = context.font;
-                            context.font = "bold "+ size + "pt myText"; 
+                            context.font = "bold "+ size + "pt myText";
+                            console.log("bold "+ size + "pt myText");
                             progressiveWidth = getWidthOfLineWithIconsReplacedWithSpaces(line); //=, not +=
                             context.font = properFont;
                         } else //regular word
