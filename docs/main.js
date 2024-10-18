@@ -430,12 +430,14 @@ function initCardImageGenerator() {
                             word = word.substring(1);
                         }
                         if (progressiveWidth + getWidthOfLineWithIconsReplacedWithSpaces(" " + word) > maxWidth) {
+                            console.log(word);
                             lines.push(line + " ");
                             line = word;
                             heightToAdd = size * 1.433;
                             widthsPerLine.push(progressiveWidth);
                             progressiveWidth = getWidthOfLineWithIconsReplacedWithSpaces(word);
                         } else {
+                            console.log(word);
                             if (line.length) {
                                 line += " ";
                                 progressiveWidth += widthOfSpace;
