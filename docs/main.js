@@ -233,7 +233,11 @@ function initCardImageGenerator() {
                                 context.font = "bold 222pt " + family;
                                 if (word.includes('$')) { // Treasure Base cards
                                     localScale = localScale * 2;
-                                } else {
+                                } else if (word.includes('%')) {
+                                    localY -= 20
+                                    localScale = localScale * 1;
+                                }
+                                else {
                                     localScale = localScale * 1.5;
                                 }
                             } else {
