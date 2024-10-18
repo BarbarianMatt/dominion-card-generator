@@ -950,7 +950,7 @@ function initCardImageGenerator() {
             }
         }
         arguments += "&size=" + templateSize;
-        history.replaceState({}, "Dominion Card Image Generator", arguments);
+        history.replaceState({}, "Dominion Card Image Generator testcool3", arguments);
     }
 
 
@@ -1286,7 +1286,7 @@ function initCardImageGenerator() {
     function adjustPageTitle() {
         let cardTitle = document.getElementById("title").value.trim();
         let creator = document.getElementById("creator").value.trim();
-        let pageDefaultTitle = "Dominion Card Image Generator";
+        let pageDefaultTitle = "Dominion Card Image Generator testcool4";
         document.title = cardTitle.length > 0 ? (pageDefaultTitle + " - " + cardTitle + " " + creator) : pageDefaultTitle;
     };
     document.getElementById('title').addEventListener('change', adjustPageTitle, false);
