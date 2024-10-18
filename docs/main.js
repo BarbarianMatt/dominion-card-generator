@@ -272,7 +272,8 @@ function initCardImageGenerator() {
                         } //else... well, that's pretty weird, but so it goes.
                         if (match[3]) { //text in front of image
                             context.textAlign = "center";
-                            context.fillStyle = getIconListing(match[2])[1];
+                            console.log(getIconListing(match[2])[1]);
+                            // context.fillStyle = getIconListing(match[2])[1];
                             let cost = match[3];
                             let bigNumberScale = 1;
                             let nx = localScale > 1.4 ? 0 : -5 * localScale ^ 2;
