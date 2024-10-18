@@ -230,11 +230,11 @@ function initCardImageGenerator() {
                         if (words.length === 1 && !word.startsWith('+')) {
                             console.log(word);
                             localY += 115 - scale * 48;
-                            context.font = "bold 192pt " + family;
+                            context.font = "bold 92pt " + family;
                             // localScale = 1.6;
                             console.log(localScale,localY);
                             localScale = 1;
-                            localY -= 20
+                            // localY -= 20
                             if (templateSize === 3) {
                                 context.font = "bold 222pt " + family;
                                 if (word.includes('$')) { // Treasure Base cards
