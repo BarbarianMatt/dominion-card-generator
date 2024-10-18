@@ -224,7 +224,7 @@ function initCardImageGenerator() {
                         var localY = y;
                         var localScale = scale;
                         if (words.length === 1 && !word.startsWith('+')) {
-                            localY += 115 - scale * 48;
+                            localY += 115 - scale * 48 * size;
                             // context.font = "bold 192pt " + family;
                             var ptSize = Math.floor(192 * size);
                             context.font = "bold "+ptSize+"pt " + family;
