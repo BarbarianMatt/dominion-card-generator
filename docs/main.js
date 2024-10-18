@@ -225,8 +225,9 @@ function initCardImageGenerator() {
                         var localScale = scale;
                         if (words.length === 1 && !word.startsWith('+')) {
                             localY += 115 - scale * 48;
-                            context.font = "bold 192pt " + family;
-                            localScale = 1.6;
+                            // context.font = "bold 192pt " + family;
+                            context.font = "bold 92pt " + family;
+                            localScale = 1.6*(92/192);
 
                             if (templateSize === 3) {
                                 context.font = "bold 222pt " + family;
@@ -424,6 +425,7 @@ function initCardImageGenerator() {
                         widthsPerLine.push(progressiveWidth);
                         progressiveWidth = 0;
                     } else {
+                        console.log(word);
                         if (word.charAt(0) === "\xa0") {
                             word = word.substring(1);
                         }
