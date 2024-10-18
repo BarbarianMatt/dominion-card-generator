@@ -199,10 +199,6 @@ function initCardImageGenerator() {
         function writeLineWithIconsReplacedWithSpaces(line, x, y, scale, family, boldSize, size=1) {
             boldSize = boldSize || 64;
             context.textAlign = "left";
-            console.log(x,y,line);
-            console.trace();
-
-            // scale *= size;
 
             if (italicSubstrings.some(substring => line.includes(substring))) {
                 context.font = "italic " + context.font;
@@ -433,7 +429,7 @@ function initCardImageGenerator() {
                             context.font = properFont;
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
                             // customSize = bigSymbolSize;
-                            customSize = bigSymbols > 1 ? Math.max(size/64,0.8) : 1;
+                            customSize = bigSymbols > 1 ? Math.max(size/64,0.9) : 1;
                             var ptSize = Math.floor(192 * customSize);
                             heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
@@ -983,7 +979,7 @@ function initCardImageGenerator() {
             }
         }
         arguments += "&size=" + templateSize;
-        history.replaceState({}, "Dominion Card Image Generator testcool3", arguments);
+        history.replaceState({}, "Dominion Card Image Generator", arguments);
     }
 
 
@@ -1319,7 +1315,7 @@ function initCardImageGenerator() {
     function adjustPageTitle() {
         let cardTitle = document.getElementById("title").value.trim();
         let creator = document.getElementById("creator").value.trim();
-        let pageDefaultTitle = "Dominion Card Image Generator testcool4";
+        let pageDefaultTitle = "Dominion Card Image Generator";
         document.title = cardTitle.length > 0 ? (pageDefaultTitle + " - " + cardTitle + " " + creator) : pageDefaultTitle;
     };
     document.getElementById('title').addEventListener('change', adjustPageTitle, false);
