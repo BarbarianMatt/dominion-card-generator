@@ -389,8 +389,20 @@ function initCardImageGenerator() {
             var sizesPerLine;
             var overallHeight;
             var size = 64 + 2;
-            var yCenterAdjust;
-            var maxHeightAdjust;
+
+            const bigSymbols = words.reduce((acc, line) => {
+                if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
+                  acc++;
+                }
+                return acc;
+            }, 0);
+
+            var yCenterAdjust = bigSymbols > 1 ? 20 : 0;
+            var maxHeightAdjust = bigSymbols > 1 ? 80 : 0;
+
+            yCenter += yCenterAdjust;
+            maxHeight += maxHeightAdjust;
+
             do { //figure out the best font size, and also decide in advance how wide and tall each individual line is
                 widthsPerLine = [];
                 heightsPerLine = [];
@@ -403,14 +415,6 @@ function initCardImageGenerator() {
                 lines = [];
                 var line = "";
                 var progressiveWidth = 0;
-                const bigSymbols = words.reduce((acc, line) => {
-                    if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
-                      acc++;
-                    }
-                    return acc;
-                  }, 0);
-                yCenterAdjust = bigSymbols > 1 ? 20 : 0;
-                maxHeightAdjust = bigSymbols > 1 ? 80 : 0;
                 for (var i = 0; i < words.length; ++i) {
                     var word = words[i];
                     var heightToAdd = 0;
@@ -473,8 +477,7 @@ function initCardImageGenerator() {
             } while (overallHeight > maxHeight && size > 16); //can only shrink so far before giving up
             var y = yCenter - (overallHeight - size * 1.433) / 2;
             
-            yCenter += yCenterAdjust;
-            maxHeight += maxHeightAdjust;
+            
 
             for (var i = 0; i < lines.length; ++i) {
                 var line = lines[i];
