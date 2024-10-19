@@ -396,10 +396,7 @@ function initCardImageGenerator() {
             // var yCenterAdjust = bigSymbols > 1 ? 20 : 0;
             // var maxHeightAdjust = bigSymbols > 1 ? 80 : 0;
             var yCenterAdjust = 0;
-            var maxHeightAdjust =30;
-
-            yCenter += yCenterAdjust;
-            maxHeight += maxHeightAdjust;
+            var maxHeightAdjust = 0;
 
             do { //figure out the best font size, and also decide in advance how wide and tall each individual line is
                 widthsPerLine = [];
@@ -413,6 +410,10 @@ function initCardImageGenerator() {
                 lines = [];
                 var line = "";
                 var progressiveWidth = 0;
+
+                yCenterAdjust = size < 60 ? 5 : 0;
+                maxHeightAdjust = size < 60 ? 30 : 0;
+
                 for (var i = 0; i < words.length; ++i) {
                     var word = words[i];
                     var heightToAdd = 0;
@@ -473,8 +474,13 @@ function initCardImageGenerator() {
                     sizesPerLine.push(customSize);
                 }
                 //overallHeight -= size*1.433;
-            } while (overallHeight > maxHeight && size > 16); //can only shrink so far before giving up
+            } while (overallHeight > (maxHeight+maxHeightAdjust) && size > 16); //can only shrink so far before giving up
+
+            yCenter += yCenterAdjust;
+            maxHeight += maxHeightAdjust;
+
             var y = yCenter - (overallHeight - size * 1.433) / 2;
+            
             
             
 
