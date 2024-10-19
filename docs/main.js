@@ -411,8 +411,8 @@ function initCardImageGenerator() {
                 var line = "";
                 var progressiveWidth = 0;
 
-                yCenterAdjust = size < 49 ? 5 : 0;
-                maxHeightAdjust = size < 49 ? 50 : 0;
+                yCenterAdjust = size < 51 ? 5 : 0;
+                maxHeightAdjust = size < 51 ? 50 : 0;
 
                 for (var i = 0; i < words.length; ++i) {
                     var word = words[i];
