@@ -433,7 +433,7 @@ function initCardImageGenerator() {
                         } else if (line.match(iconWithNumbersPatternSingle) && !line.startsWith('+')) {
                             // customSize = bigSymbols > 1 ? Math.max(size/64,0.8) : 1;
                             var minSize = bigSymbols > 1 ? 0.85 : 0.93;
-                            customSize = Math.min(Math.max((size+12)/64,minSize),1);
+                            customSize = Math.min(Math.max((size+10)/64,minSize),1);
                             var ptSize = Math.floor(192 * customSize);
                             heightToAdd = Math.floor(ptSize*1.433);
                             var properFont = context.font;
