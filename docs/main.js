@@ -412,7 +412,7 @@ function initCardImageGenerator() {
                 var progressiveWidth = 0;
 
                 yCenterAdjust = size < 40 ? 5 : 0;
-                maxHeightAdjust = size < 40 ? 30 : 0;
+                maxHeightAdjust = size < 40 ? 40 : 0;
 
                 for (var i = 0; i < words.length; ++i) {
                     var word = words[i];
@@ -481,7 +481,7 @@ function initCardImageGenerator() {
 
             var y = yCenter - (overallHeight - size * 1.433) / 2;
             
-            
+            console.log(size)
             
 
             for (var i = 0; i < lines.length; ++i) {
